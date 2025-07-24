@@ -9,28 +9,36 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home({ loaderData }: Route.ComponentProps) {
-  const data = loaderData;
-
+export default function Home({}: Route.ComponentProps) {
   const redId = useId();
   const blueId = useId();
   const greenId = useId();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const values = Object.fromEntries(fd);
-    console.log(values, { data });
+    console.log(...fd);
   }
 
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="mx-auto flex max-w-xl flex-col bg-neutral-50 p-4 w-full">
-        <h2>Login</h2>
+        <h2 className="mb-4 text-lg font-semibold">Login</h2>
 
-        <Form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-          <input type="text" name="firstName" className="border p-2 rounded bg-white" />
-          <input type="text" name="secondName" className="border p-2 rounded bg-white" />
+        <Form className="flex flex-col gap-2" onSubmit={handleSubmit} method="POST">
+          <input
+            type="text"
+            name="firstName"
+            className="border p-2 rounded bg-white"
+            placeholder="First Name"
+          />
+          <input
+            type="text"
+            name="secondName"
+            className="border p-2 rounded bg-white"
+            placeholder="Second Name"
+          />
 
           <div className="flex gap-2">
             <label className="text-sm" htmlFor={redId}>
@@ -54,7 +62,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   );
 }
 
-export function loader() {
-  console.log('home loader');
-  return { example: 'example' };
-}
+export async function loader({}: Route.LoaderArgs) {}
+
+export async function action({}: Route.ActionArgs) {}
