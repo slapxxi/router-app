@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from 'react-router';
+import { Form, href, Link } from 'react-router';
 import type { Route } from './+types/home.route';
 
 export function meta({}: Route.MetaArgs) {
@@ -9,14 +9,24 @@ export function meta({}: Route.MetaArgs) {
 export default function HomeRoute({}: Route.ComponentProps) {
   const [count, setCount] = useState(0);
 
-  console.log('render');
-
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-pink-200/10">
+    <div className="flex flex-col min-h-screen items-center justify-center bg-pink-200/10">
+      <header className="p-2">
+        <nav>
+          <ul>
+            <li>
+              <Link to={href('/posts')} prefetch="intent">
+                Posts
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <div className="mx-auto flex w-full max-w-xl flex-col rounded bg-white p-4 shadow-lg/10">
         <h2 className="mb-4 text-lg font-semibold">Login {count}</h2>
 
