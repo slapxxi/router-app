@@ -5,7 +5,6 @@ export default function PostsLayoutRoute({}: Route.ComponentProps) {
   return (
     <div className="p-2">
       <h1 className="text-xl font-bold">Posts</h1>
-
       <Outlet />
     </div>
   );

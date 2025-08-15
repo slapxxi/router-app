@@ -7,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function HomeRoute({}: Route.ComponentProps) {
-  const [count, setCount] = useState(0);
+  const [count] = useState(0);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
