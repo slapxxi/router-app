@@ -14,7 +14,7 @@ export default function HomeRoute({}: Route.ComponentProps) {
   }
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-pink-200/10">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-pink-200/10">
       <header className="p-2">
         <nav>
           <ul>
